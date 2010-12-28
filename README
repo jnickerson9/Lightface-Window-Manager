@@ -1,0 +1,43 @@
+Initialize the global window manager after the DOM loads, and then instantiate each using:
+
+// create static window
+var static_window_id = window.winmanager.createstaticwindow({
+	height:200,
+	width:450,
+	fadeDelay:150,
+	fadeDuration:150,
+	title:'It worked!',
+	content:'Replace me',
+	buttons: [{title:'Close', event: function() {this.close();}}]
+});
+
+// or create request window
+var request_window_id = window.winmanager.createwindow({
+	height:'auto',
+	width:450,
+	fadeDelay:150,
+	fadeDuration:150,
+	title:'It worked!',
+	url: 'files/changeme.html'
+	buttons: [
+		{title:'Close', event: function() {this.close();}}
+	],
+	request: {
+		method:'get',
+		data: {
+			'filetype':'text'
+		}
+	}
+});
+
+// then open
+if (static_window_id != null) {
+	window.winmanager.getwindow(static_window_id).open();
+}
+if (request_window_id != null) {
+	window.winmanager.getwindow(request_window_id).open();				
+}
+
+
+
+Enjoy!
